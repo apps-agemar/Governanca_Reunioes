@@ -1,0 +1,8 @@
+Este diretório é destinado ao armazenamento de imagens da plataforma "Governança de Reuniões" do Grupo Agemar.
+
+Para personalizar a identidade visual do sistema com sua logomarca oficial:
+1. Renomeie sua imagem para "logo.png" (ou "logo.jpg").
+2. Envie o arquivo diretamente para esta pasta "/public/imagens/".
+3. A aplicação carregará a imagem automaticamente na tela de login, painel e cabeçalho, substituindo os elementos visuais padrão.
+
+Observação: Como esta aplicação utiliza o empacotamento do Vite, qualquer arquivo nesta pasta "public/imagens/" será disponibilizado publicamente no caminho relativo "/imagens/...".

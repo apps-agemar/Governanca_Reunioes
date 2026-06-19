@@ -1,0 +1,6 @@
+{
+  "name": "Governança de Reuniões",
+  "description": "Plataforma corporativa para planejamento, registro, acompanhamento e consulta de reuniões, com controle de BUs, atas, decisões, anexos e planejamento visual.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
