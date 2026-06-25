@@ -24,7 +24,7 @@ interface BusinessUnitManagerProps {
   businessUnits: BusinessUnit[];
   onAddBU: (bu: Omit<BusinessUnit, 'id' | 'createdAt' | 'updatedAt'>) => void;
   onUpdateBU: (id: string, bu: Partial<BusinessUnit>) => void;
-  onDeleteBU: (id: string) => boolean | Promise<boolean>;
+  onDeleteBU: (id: string) => boolean; // return true if deleted, false if references exist
   userRole: 'Administrador' | 'Editor' | 'Visualizador';
 }
 
@@ -132,11 +132,11 @@ export default function BusinessUnitManager({
   };
 
   // Perform delete command
-  const handleDelete = async (id: string, buName: string) => {
+  const handleDelete = (id: string, buName: string) => {
     setSuccessMsg(null);
     setErrorMsg(null);
-
-    const wasDeleted = await onDeleteBU(id);
+    
+    const wasDeleted = onDeleteBU(id);
     if (wasDeleted) {
       setSuccessMsg(`Unidade de Negócio "${buName}" excluída com sucesso.`);
       setTimeout(() => setSuccessMsg(null), 4000);

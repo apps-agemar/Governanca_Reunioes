@@ -21,7 +21,7 @@ CREATE TABLE configuracao_ldaps (
     id INT AUTO_INCREMENT PRIMARY KEY,
     host VARCHAR(255) NOT NULL DEFAULT 'ldaps://ldap.agemar.com.br',
     port INT NOT NULL DEFAULT 636,
-    `ssl` BOOLEAN NOT NULL DEFAULT TRUE,
+    ssl BOOLEAN NOT NULL DEFAULT TRUE,
     base_dn VARCHAR(255) NOT NULL DEFAULT 'dc=agemar,dc=com,dc=br',
     bind_dn VARCHAR(255) NOT NULL DEFAULT 'cn=admin,dc=agemar,dc=com,dc=br',
     bind_password VARCHAR(255) NOT NULL,
@@ -141,7 +141,7 @@ INSERT INTO usuarios (id, network_login, name, email, role) VALUES
 ('usr_editor', 'editor.agemar', 'Gestor de Contratos', 'editor@agemar.com.br', 'Editor');
 
 -- Configuração LDAPS Padrão
-INSERT INTO configuracao_ldaps (host, port, `ssl`, base_dn, bind_dn, bind_password, user_filter) VALUES
+INSERT INTO configuracao_ldaps (host, port, ssl, base_dn, bind_dn, bind_password, user_filter) VALUES
 ('ldaps://ldap.agemar.com.br', 636, 1, 'dc=agemar,dc=com,dc=br', 'cn=admin,dc=agemar,dc=com,dc=br', 'password123', '(sAMAccountName={{username}})');
 
 -- Unidades de Negócio Iniciais

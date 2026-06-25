@@ -9,14 +9,12 @@ interface AgemarLogoProps {
   className?: string;
   showCelebration?: boolean;
   size?: 'sm' | 'md' | 'lg';
-  internal?: boolean;
 }
 
 export default function AgemarLogo({
   className = '',
   showCelebration = true,
   size = 'md',
-  internal = false,
 }: AgemarLogoProps) {
   // Brand colors
   const primaryGreen = '#007A38';
@@ -26,11 +24,19 @@ export default function AgemarLogo({
   const scale = size === 'sm' ? 0.6 : size === 'lg' ? 1.4 : 1;
 
   // Image loading safety checks
+  const [imgSrc, setImgSrc] = React.useState<string | null>('/imagens/logo.png');
   const [imgFailed, setImgFailed] = React.useState(false);
-  const imgSrc = internal ? '/imagens/Logo-interna.png' : '/imagens/Logo.png';
 
   const handleImgError = () => {
-    setImgFailed(true);
+    if (imgSrc === '/imagens/logo.png') {
+      // Tentar extensão alternativa .jpg caso .png falhe
+      setImgSrc('/imagens/logo.jpg');
+    } else if (imgSrc === '/imagens/logo.jpg') {
+      // Tentar extensão alternativa .svg
+      setImgSrc('/imagens/logo.svg');
+    } else {
+      setImgFailed(true);
+    }
   };
 
   return (
@@ -115,8 +121,8 @@ export default function AgemarLogo({
         )}
       </div>
 
-      {/* Middle Separator and Celebration Badge ("42 Anos") — só mostra se a imagem falhou */}
-      {showCelebration && imgFailed && (
+      {/* Middle Separator and Celebration Badge ("42 Anos") */}
+      {showCelebration && (
         <>
           {/* Vertical Separator */}
           <div
